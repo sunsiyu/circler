@@ -1,0 +1,8 @@
+Package: circler
+Title: Everyhing related to circle
+Version: 0.1.0.9000
+Authors@R: person("Siyu", "Sun", email = "sunsiyu.tud@gmail.com", role = c("aut", "cre"))
+Description: Everything related to circle. Calculation of radius, diameter, area. Plot of different circles.
+Depends: R (>= 3.2.2)
+License: GPL2
+LazyData: true
