@@ -6,4 +6,6 @@ Description: Everything related to circle. Calculation of radius, diameter, area
 Depends: R (>= 3.2.2)
 License: GPL2
 LazyData: true
+Imports: 
+          reshape2 (>= 1.4.1)
 Suggests: testthat

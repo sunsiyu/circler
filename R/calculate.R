@@ -1,36 +1,3 @@
-#' Convert degrees to radians
-#' 
-#' @param deg A numeric vector, degrees to be converted
-#' @return The radians converted from degrees
-#' @examples 
-#' rad <- deg2rad(180)
-#' rads <- deg2rad(seq(0, 360, 90))
-#' @export
-deg2rad <- function(deg)
-{
-  if (!is.numeric(deg)) {
-    stop("Not numeric: deg!")
-  }
-  return (deg * pi / 180)
-}
-
-#' Convert radians to degrees
-#' 
-#' @param rad A numeric vector, radians to be converted
-#' @return The degrees converted from radians
-#' @examples 
-#' deg <- rad2deg(pi)
-#' degs <- rad2deg(seq(0, 2*pi, pi/2))
-#' @export
-rad2deg <- function(rad)
-{
-  if (!is.numeric(rad)) {
-    stop("Not numeric: rad!")
-  }
-  return (rad * 180 / pi)
-}
-
-
 #' Calculate area from different variables
 #' 
 #' @param variable A character with name of variable supplied
@@ -134,5 +101,82 @@ getcircumference <- function(variable=c("radius", "diameter", "area")[1], value)
   )
 }
 
+#' Calculate length of arc of a circle
+#' 
+#' @param rad    degree in radian
+#' @param radius radius of the circle
+#' @return Length of arc of a circle.
+#' @examples 
+#' arc <- getarc(pi, 1)
+#' arcs <- getarc(c(0, pi, 2*pi), 1:3)
+#' @export
+getarc <- function(rad, radius)
+{
+  if (!is.numeric(rad) || !is.numeric(radius))
+    stop("Not numeric: rad or radius!")
 
+  return(rad * radius)
+}
 
+#' Calculate length of chord of a circle
+#' 
+#' @param rad    degree in radian
+#' @param radius radius of the circle
+#' @return Length of chord of a circle.
+#' @examples 
+#' chord <- getchord(pi, 1)
+#' chords <- getchord(c(0, pi, 2*pi), 1:3)
+#' @export
+getchord <- function(rad, radius)
+{
+  if (!is.numeric(rad) || !is.numeric(radius))
+    stop("Not numeric: rad or radius!")
+  
+  return(2 * radius * abs(sin(0.5 * rad)))  
+  
+}
+
+#' Calculate area of sector of a circle
+#' 
+#' @param rad    degree in radian
+#' @param radius radius of the circle
+#' @return Area of sector of a circle
+#' @examples 
+#' sct <- getsector(pi, 1)
+#' scts <- getsector(c(0, pi, 2*pi), 1:3)
+#' @export
+getsector <- function(rad, radius)
+{
+  if (!is.numeric(rad) || !is.numeric(radius))
+    stop("Not numeric: rad or radius!")
+  
+  return(0.5 * rad * radius * radius)
+  
+}
+
+#' Calculate area of segment of a circle
+#' 
+#' @param rad    degree in radian
+#' @param radius radius of the circle
+#' @return Area of segment of a circle
+#' @examples 
+#' seg <- getsegment(pi, 1)
+#' segs <- getsegment(c(0, pi, 2*pi), 1:3)
+#' @export
+getsegment <- function(rad, radius)
+{
+  if (!is.numeric(rad) || !is.numeric(radius))
+    stop("Not numeric: rad or radius!")
+  
+  asector <- getsector(rad, radius)
+  atriangle <- radius * radius * abs(cos(0.5*rad) * sin(0.5*rad))
+
+  return(asector - atriangle)
+  
+}
+  
+  
+  
+  
+  
+  
